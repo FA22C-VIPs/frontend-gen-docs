@@ -1,0 +1,472 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cah-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">cah-frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GameLayoutComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/game-layout/game-layout.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This class is responsible for creating the desired game layout by rendering a grid layout made by the MatGridListModule</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"> tiles: Tile[] = [
+    {text: &#39;Tile 1&#39;, cols: 1, rows: 1, color: &#39;red&#39;, component: SampleAComponent},
+    {text: &#39;Tile 2&#39;, cols: 1, rows: 1, color: &#39;green&#39;, component: SampleBComponent}
+    ];</code></pre></div>
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-game-layout</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>MatGridListModule</code>
+                                <code><a href="../components/PlayingFieldComponent.html" target="_self" >PlayingFieldComponent</a></code>
+                            <code>NgComponentOutlet</code>
+                            <code>NgIf</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./game-layout.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./game-layout.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#tiles" >tiles</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tiles"></a>
+                    <span class="name">
+                        <span ><b>tiles</b></span>
+                        <a href="#tiles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Tile.html" target="_self" >Tile[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    {text: &#x27;Black Card Area&#x27;, cols: 3, rows: 4, color: &#x27;gray&#x27;, component: BlackCardAreaComponent},
+    {text: &#x27;Playing Field&#x27;, cols: 12, rows: 8, color: &#x27;lightgreen&#x27;, component: PlayingFieldComponent},
+    {text: &#x27;Chat Panel&#x27;, cols: 5, rows: 8, color: &#x27;lightpink&#x27;, component: ChatPanelComponent},
+    {text: &#x27;Player List&#x27;, cols: 3, rows: 4, color: &#x27;lightblue&#x27;, component: PlayerListComponent},
+    {text: &#x27;White Cards Area&#x27;, cols: 20, rows: 3, color: &#x27;&#x27;, component: WhiteCardsAreaComponent}
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/game-layout/game-layout.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {ApplicationModule, Component, Type} from &#x27;@angular/core&#x27;;
+import {MatGridListModule} from &#x27;@angular/material/grid-list&#x27;;
+import {PlayingFieldComponent} from &quot;../playing-field/playing-field.component&quot;;
+import {NgComponentOutlet, NgIf} from &quot;@angular/common&quot;;
+import {ChatPanelComponent} from &quot;../chat-panel/chat-panel.component&quot;;
+import {BlackCardAreaComponent} from &quot;../black-card-area/black-card-area.component&quot;;
+import {PlayerListComponent} from &quot;../player-list/player-list.component&quot;;
+import {WhiteCardsAreaComponent} from &quot;../white-cards-area/white-cards-area.component&quot;;
+
+/**
+ Interface for a single tile intended for the grid layout made of many tiles used in game-layout.component.ts
+ */
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+  /**
+   This variable will hold the component associated to the specific tile, so that it can later be used for rendering inside the template
+   */
+  component: Type&lt;ApplicationModule&gt; | null;
+}
+
+/**
+ * This class is responsible for creating the desired game layout by rendering a grid layout made by the MatGridListModule
+ *
+ * @example
+ *  tiles: Tile[] &#x3D; [
+ *     {text: &#x27;Tile 1&#x27;, cols: 1, rows: 1, color: &#x27;red&#x27;, component: SampleAComponent},
+ *     {text: &#x27;Tile 2&#x27;, cols: 1, rows: 1, color: &#x27;green&#x27;, component: SampleBComponent}
+ *     ];
+ *
+ * @author Kevin Stosik
+ *
+ * @version 0.1
+ */
+@Component({
+  selector: &#x27;app-game-layout&#x27;,
+  standalone: true,
+  imports: [MatGridListModule, PlayingFieldComponent, NgComponentOutlet, NgIf],
+  templateUrl: &#x27;./game-layout.component.html&#x27;,
+  styleUrl: &#x27;./game-layout.component.css&#x27;
+})
+export class GameLayoutComponent {
+  tiles: Tile[] &#x3D; [
+    {text: &#x27;Black Card Area&#x27;, cols: 3, rows: 4, color: &#x27;gray&#x27;, component: BlackCardAreaComponent},
+    {text: &#x27;Playing Field&#x27;, cols: 12, rows: 8, color: &#x27;lightgreen&#x27;, component: PlayingFieldComponent},
+    {text: &#x27;Chat Panel&#x27;, cols: 5, rows: 8, color: &#x27;lightpink&#x27;, component: ChatPanelComponent},
+    {text: &#x27;Player List&#x27;, cols: 3, rows: 4, color: &#x27;lightblue&#x27;, component: PlayerListComponent},
+    {text: &#x27;White Cards Area&#x27;, cols: 20, rows: 3, color: &#x27;&#x27;, component: WhiteCardsAreaComponent}
+  ];
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Create a MatGridList with 20 columns and a height equal to the monitor height --&gt;
+&lt;mat-grid-list cols&#x3D;&quot;20&quot; rowHeight&#x3D;&quot;fit&quot; gutterSize&#x3D;&quot;0&quot; style&#x3D;&quot;height: 100vh;&quot;&gt;
+    @for (tile of tiles; track tile) {
+    &lt;!-- Fill the tiles with all of the relevant data --&gt;
+    &lt;mat-grid-tile
+        [colspan]&#x3D;&quot;tile.cols&quot;
+        [rowspan]&#x3D;&quot;tile.rows&quot;
+        [style.background]&#x3D;&quot;tile.color&quot;&gt;
+        &lt;!-- Take the ApplicationModule from tile.component and render it as a ng-container --&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;tile.component; else componentNotFound&quot;&gt;
+            &lt;ng-container *ngComponentOutlet&#x3D;&quot;tile.component&quot;&gt;&lt;/ng-container&gt;
+        &lt;/ng-container&gt;
+        &lt;!-- Else case for when there is no component --&gt;
+        &lt;ng-template #componentNotFound&gt;
+            &lt;p&gt;
+                Component not found: &lt;strong&gt;{{tile.text}}&lt;/strong&gt;
+            &lt;/p&gt;
+        &lt;/ng-template&gt;
+    &lt;/mat-grid-tile&gt;
+    }
+&lt;/mat-grid-list&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Create a MatGridList with 20 columns and a height equal to the monitor height --><mat-grid-list cols="20" rowHeight="fit" gutterSize="0" style="height: 100vh;">    @for (tile of tiles; track tile) {    <!-- Fill the tiles with all of the relevant data -->    <mat-grid-tile        [colspan]="tile.cols"        [rowspan]="tile.rows"        [style.background]="tile.color">        <!-- Take the ApplicationModule from tile.component and render it as a ng-container -->        <ng-container *ngIf="tile.component; else componentNotFound">            <ng-container *ngComponentOutlet="tile.component"></ng-container>        </ng-container>        <!-- Else case for when there is no component -->        <ng-template #componentNotFound>            <p>                Component not found: <strong>{{tile.text}}</strong>            </p>        </ng-template>    </mat-grid-tile>    }</mat-grid-list></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BlackCardAreaComponent', 'selector': 'app-black-card-area'},{'name': 'ChatPanelComponent', 'selector': 'app-chat-panel'},{'name': 'GameLayoutComponent', 'selector': 'app-game-layout'},{'name': 'PlayerListComponent', 'selector': 'app-player-list'},{'name': 'PlayingFieldComponent', 'selector': 'app-playing-field'},{'name': 'WhiteCardsAreaComponent', 'selector': 'app-white-cards-area'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'GameLayoutComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GameLayoutComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
